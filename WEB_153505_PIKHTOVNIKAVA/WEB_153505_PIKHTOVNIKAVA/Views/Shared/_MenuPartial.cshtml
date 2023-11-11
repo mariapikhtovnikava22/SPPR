@@ -1,0 +1,23 @@
+﻿﻿@{
+    // достает контролер из маршрута
+    var controller = ViewContext.RouteData.Values["controller"]? //Эта строка кода объявляет переменную controller, 
+    //которая будет использоваться для хранения имени контроллера,полученного из маршрута. 
+    // Это имя будет использоваться для определения текущего контроллера, на котором находится пользователь.
+           .ToString()?
+           .ToLower()
+           ?? String.Empty;
+
+    var area = ViewContext.RouteData.Values["area"]? //Здесь используется ViewContext, 
+    //чтобы получить информацию о текущем маршруте. RouteData.Values - это коллекция значений маршрута, 
+    //и "controller" - это ключ, который соответствует имени текущего контроллера.
+    .ToString()?
+    .ToLower()
+    ?? String.Empty;
+}
+
+   <a class="navbar-brand" asp-controller="Home" asp-action="Index">15350098</a>
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" asp-controller="Home" asp-action="Index">Лб 1</a>
+        <a class="nav-item nav-link" asp-controller="SneakersProduct" asp-action="Index" asp-route-pageno="1">Каталог</a>
+        <a class="nav-item nav-link" asp-area="Admin" asp-page="/Index">Администрирование</a>
+    </div>
