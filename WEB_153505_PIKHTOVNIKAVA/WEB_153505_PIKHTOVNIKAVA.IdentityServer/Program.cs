@@ -1,5 +1,8 @@
-﻿using Serilog;
+using Serilog;
 using WEB_153505_PIKHTOVNIKAVA.IdentityServer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using WEB_153505_PIKHTOVNIKAVA.IdentityServer.Data;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
