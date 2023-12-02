@@ -43,12 +43,10 @@
 }
 else
 {
-    <form id="loginForm" class="form-inline ms-auto">
-        <!-- 'ms-auto' сдвигает форму вправо -->
-        <button id="login" type="submit" class="nav-link btn btn-link text-dark">
-            <p class="navbar-text">
-                Login
-            </p>
+    <form class="form-inline" asp-controller="Identity" asp-action="Login">
+        <button id="logout" type="submit" class="btn btn-secondary">
+            Login
         </button>
     </form>
+
 }

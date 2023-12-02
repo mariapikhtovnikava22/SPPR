@@ -29,6 +29,18 @@
     <h2>Сезон</h2>
 </p>
 
+
+<div class="row">
+    <!-- страницы начало -->
+    <nav aria-label="Page navigation example">
+        <Pager current-page="@Model.CurrentPage"
+               total-pages="@Model.TotalPages"
+               category="@category">
+
+        </Pager>
+    </nav>
+</div><!-- страницы конец -->
+
 <div class="row justify-content-start">
     <div class="col-2">
         <div class="col-2 border-2">
@@ -44,6 +56,7 @@
                         @ViewData["currentCategory"]    
                     </a>
                     <!-- отображение действительной категории конец -->
+
                     <!-- отображение всех категорий начало -->
                     <ul class="dropdown-menu">
                         <li>
@@ -70,65 +83,6 @@
         </div><!-- выбор категории -->
     </div>
 
-    <!-- карточки с кроссовками начало -->
-    @foreach (var item in Model.Items)
-    {
-        <div class="col-3">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="@item.PhotoPath" width="300" />
-                            <h5 class="card-title">@item.Name</h5>
-                            <p class="card-text">@item.Description</p>
-                            <a asp-controller="Cart" asp-action="Add"
-                           asp-route-id="@item.Id"
-                           asp-route-returnurl="@returnUrl"
-                           class="btn btn-primary">
-                                Добавить в корзину <i class="fa-solid fa-cart-shopping"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-    <!-- карточки с самолетами конец -->
-
-    <div class="row">
-        <!-- страницы начало -->
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item">
-                    <!-- кнопка взад -->
-                    <a class="page-link"
-                       asp-controller="SneakersProduct"
-                       asp-route-category="@category"
-                       asp-route-pageno="@prev">
-                        Previous
-                    </a>
-                </li>   <!-- кнопка взад -->
-                @for (int i = 1; i <= Model.TotalPages; i++)
-                {
-                    <li class="page-item @(Model.CurrentPage==i ? "active" : "")">
-                        <!-- кнопка с номером страницы -->
-                        <a class="page-link"
-                       asp-controller="SneakersProduct"
-                       asp-route-category="@category"
-                       asp-route-pageno="@i">
-                            @i
-                        </a>
-                    </li> <!-- кнопка с номером страницы -->
-                }
-                <li class="page-item">
-                    <!-- кнопка вперед -->
-                    <a class="page-link"
-                       asp-controller="SneakersProduct"
-                       asp-route-category="@category"
-                       asp-route-pageno="@next">Next</a>
-                </li> <!-- кнопка вперед -->
-            </ul>
-        </nav>
-    </div><!-- страницы конец -->
+    <partial name="_ProductCardsPartial" />
 
 </div>

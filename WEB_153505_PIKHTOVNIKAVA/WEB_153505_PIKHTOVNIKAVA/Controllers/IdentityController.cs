@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WEB_153505_PIKHTOVNIKAVA.Controllers
@@ -12,7 +13,7 @@ namespace WEB_153505_PIKHTOVNIKAVA.Controllers
             new AuthenticationProperties
             {
                 RedirectUri =
-            Url.Action("Index", "Home")
+                    Url.Action("Index", "Home")
             });
         }           
 
@@ -23,8 +24,9 @@ namespace WEB_153505_PIKHTOVNIKAVA.Controllers
             new AuthenticationProperties
             {
                 RedirectUri =
-            Url.Action("Index", "Home")
+                      Url.Action("Index", "Home")
             });
+
         }
     }
 }

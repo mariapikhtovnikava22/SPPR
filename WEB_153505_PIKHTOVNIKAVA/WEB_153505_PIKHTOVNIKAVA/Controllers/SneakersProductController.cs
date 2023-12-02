@@ -2,6 +2,7 @@
 using WEB_153505_PIKHTOVNIKAVA.Services.ProductService;
 using WEB_153505_PIKHTOVNIKAVA.Domain.Models;
 using WEB_153505_PIKHTOVNIKAVA.Domain.Entities;
+using WEB_153505_PIKHTOVNIKAVA.Extensions;
 using WEB_153505_PIKHTOVNIKAVA.Services.SeasonCategoryService;
 
 namespace WEB_153505_PIKHTOVNIKAVA.Controllers
@@ -35,9 +36,15 @@ namespace WEB_153505_PIKHTOVNIKAVA.Controllers
             // в представление строку "Все"
             var currentCategory = categories.Find(c => c.NormalizedName == category);
 
+
             // чтобы отображать категорию "все", на странице с типами
             ViewData["currentCategory"] = currentCategory == null ? "Все" : currentCategory.Name;
             ViewBag.categories = categories;
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_FurnituriesPartial", productResponse.Data);
+            }
 
             return View(productResponse.Data);
         }
