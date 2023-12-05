@@ -30,16 +30,7 @@
 </p>
 
 
-<div class="row">
-    <!-- страницы начало -->
-    <nav aria-label="Page navigation example">
-        <Pager current-page="@Model.CurrentPage"
-               total-pages="@Model.TotalPages"
-               category="@category">
 
-        </Pager>
-    </nav>
-</div><!-- страницы конец -->
 
 <div class="row justify-content-start">
     <div class="col-2">
@@ -86,3 +77,14 @@
     <partial name="_ProductCardsPartial" />
 
 </div>
+
+<div class="row">
+    <!-- страницы начало -->
+    <nav aria-label="Page navigation example">
+        <Pager current-page="@Model.CurrentPage"
+               total-pages="@Model.TotalPages"
+               category="@category">
+
+        </Pager>
+    </nav>
+</div><!-- страницы конец -->

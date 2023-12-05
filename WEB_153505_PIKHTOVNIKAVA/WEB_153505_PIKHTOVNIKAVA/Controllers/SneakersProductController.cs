@@ -19,6 +19,8 @@ namespace WEB_153505_PIKHTOVNIKAVA.Controllers
             this._categoryService = categoryService;
         }
 
+
+        [Route("Catalog/{category?}", Name = "catalog")]
         public async Task<IActionResult> Index(string? category, int pageno)
         {
             // получаем список кроссовок

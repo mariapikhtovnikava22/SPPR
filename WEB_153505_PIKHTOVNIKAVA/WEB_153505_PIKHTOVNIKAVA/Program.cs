@@ -1,4 +1,5 @@
-﻿using WEB_153505_PIKHTOVNIKAVA.Models;
+﻿using WEB_153505_PIKHTOVNIKAVA.Domain.Models;
+using WEB_153505_PIKHTOVNIKAVA.Models;
 using WEB_153505_PIKHTOVNIKAVA.Services.ProductService;
 using WEB_153505_PIKHTOVNIKAVA.Services.SeasonCategoryService;
 //using WEB_153505_PIKHTOVNIKAVA.Services.ProductService;
@@ -18,6 +19,8 @@ var ApiUri = builder.Configuration["UriData:ApiUri"];
 
 builder.Services.AddRazorPages();
 
+builder.Services.AddScoped(typeof(Cart), sp => SessionCart.GetCart(sp));
+
 builder.Services
 .AddHttpClient<IProductService, ApiProductService>(opt =>
 opt.BaseAddress = new Uri(ApiUri));
@@ -30,6 +33,9 @@ opt.BaseAddress = new Uri(ApiUri));
 builder.Services.AddAuthorization();
 
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 
 builder.Services.AddAuthentication(opt =>
 {
@@ -68,10 +74,13 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 
 app.MapRazorPages().RequireAuthorization();

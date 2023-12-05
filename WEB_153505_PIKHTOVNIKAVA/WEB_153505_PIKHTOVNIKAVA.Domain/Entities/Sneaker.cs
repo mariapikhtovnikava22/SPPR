@@ -22,6 +22,6 @@ namespace WEB_153505_PIKHTOVNIKAVA.Domain.Entities
 
         public string? PhotoPath { get; set; }
 
-        
+            
     }
 }

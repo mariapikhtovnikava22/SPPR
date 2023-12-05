@@ -7,7 +7,7 @@
 @if (User.Identity.IsAuthenticated)
 {
     <!-- Информация пользователя -->
-    @await Component.InvokeAsync(nameof(WEB_153505_PIKHTOVNIKAVA.ViewComponents.Cart))
+    @await Component.InvokeAsync(nameof(WEB_153505_PIKHTOVNIKAVA.ViewComponents.OrderCart))
     <!-- Информация пользователя конец-->
     <!--выпадающий список с инфой о пользователе и кнопкой logout-->
     <div class="dropdown ms-4 nav-color">
